@@ -1,0 +1,184 @@
+
+<!-- <div *ngIf="checkSomething()">
+    <p-tabMenu [model]="items"></p-tabMenu>
+</div> -->    
+<div *ngIf="checkSomething()">
+
+<div *ngIf="currentUser.rol=='admin'">
+  <nav class="navbar navbar-expand-lg circle " style="">
+    <a class="navbar-brand" [routerLink]="['/']">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <div *ngIf="navlista()=='http://localhost:4200/deuda'; else deuda">
+                    <a class="nav-link active" [routerLink]="['/deuda']">Deuda</a>
+                </div>
+                <ng-template #deuda>
+                    <a class="nav-link " [routerLink]="['/deuda']" >Deuda</a>
+                </ng-template>
+                
+
+            </li>
+            <li class="nav-item justify-content-end">
+                <div *ngIf="navcliente()=='http://localhost:4200/credito'; else credito">
+                    <a class="nav-link active" [routerLink]="['/credito']">Credito</a>
+                </div>
+                <ng-template #credito>
+                    <a class="nav-link active" [routerLink]="['/credito']" style="background-color: transparent">Credito</a>
+                </ng-template>
+            </li>
+            <li class="nav-item">
+                    <div *ngIf="navlista()=='http://localhost:4200/pagos'; else pagos">
+                        <a class="nav-link active" [routerLink]="['/pagos']">Pagos</a>
+                    </div>
+                    <ng-template #pagos>
+                        <a class="nav-link active" [routerLink]="['/pagos']" style="background-color: transparent">Pagos</a>
+                    </ng-template>
+                </li>
+                <li class="nav-item justify-content-end">
+                    <div *ngIf="navcliente()=='http://localhost:4200/register'; else register">
+                        <a class="nav-link active" [routerLink]="['/register']">Registro</a>
+                    </div>
+                    <ng-template #register>
+                        <a class="nav-link active" [routerLink]="['/register']" style="background-color: transparent">Registro</a>
+                    </ng-template>
+                </li>
+                <li class="nav-item justify-content-end">
+                    <div *ngIf="navcliente()=='http://localhost:4200/registro'; else registro">
+                        <a class="nav-link active" [routerLink]="['/registro']">Listado Usuarios</a>
+                    </div>
+                    <ng-template #registro>
+                        <a class="nav-link active" [routerLink]="['/registro']" style="background-color: transparent">Listado Usuarios</a>
+                    </ng-template>
+            </li>
+            <li class="nav-item justify-content-end">
+                    <div *ngIf="navcliente()=='http://localhost:4200/logout'; else logout">
+                        <a class="nav-link active" [routerLink]="['/logout']">Logout</a>
+                    </div>
+                    <ng-template #logout>
+                        <a class="nav-link active" [routerLink]="['/logout']" style="background-color: transparent">logout</a>
+                    </ng-template>
+            </li>
+            
+            <li *ngFor="let currentUser of currentUsers">
+                    {{currentUser.username}} ({{currentUser.firstName}} {{currentUser.rol}})
+                    
+                </li>
+            
+          </ul>
+    </div>
+  </nav>
+</div>
+
+
+<div *ngIf="currentUser.rol=='empleado'">
+    <nav class="navbar navbar-expand-lg circle " style="">
+      <a class="navbar-brand" [routerLink]="['/']">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+                <div *ngIf="navlista()=='http://localhost:4200/deuda'; else deuda">
+                    <a class="nav-link active" [routerLink]="['/deuda']">Deuda</a>
+                </div>
+                <ng-template #deuda>
+                    <a class="nav-link " [routerLink]="['/deuda']" >Deuda</a>
+                </ng-template>
+                
+
+            </li>
+            <li class="nav-item justify-content-end">
+                <div *ngIf="navcliente()=='http://localhost:4200/credito'; else credito">
+                    <a class="nav-link active" [routerLink]="['/credito']">Credito</a>
+                </div>
+                <ng-template #credito>
+                    <a class="nav-link active" [routerLink]="['/credito']" style="background-color: transparent">Credito</a>
+                </ng-template>
+            </li>
+            <li class="nav-item">
+                    <div *ngIf="navlista()=='http://localhost:4200/pagos'; else pagos">
+                        <a class="nav-link active" [routerLink]="['/pagos']">Pagos</a>
+                    </div>
+                    <ng-template #pagos>
+                        <a class="nav-link active" [routerLink]="['/pagos']" style="background-color: transparent">Pagos</a>
+                    </ng-template>
+                </li>
+                <li class="nav-item justify-content-end">
+                    <div *ngIf="navcliente()=='http://localhost:4200/register'; else register">
+                        <a class="nav-link active" [routerLink]="['/register']">Registro</a>
+                    </div>
+                    <ng-template #register>
+                        <a class="nav-link active" [routerLink]="['/register']" style="background-color: transparent">Registro</a>
+                    </ng-template>
+                </li>
+                
+            <li class="nav-item justify-content-end">
+                    <div *ngIf="navcliente()=='http://localhost:4200/logout'; else logout">
+                        <a class="nav-link active" [routerLink]="['/logout']">Logout</a>
+                    </div>
+                    <ng-template #logout>
+                        <a class="nav-link active" [routerLink]="['/logout']" style="background-color: transparent">logout</a>
+                    </ng-template>
+            </li>
+              <!-- <li *ngFor="let user of users">
+                      {{currentUser.username}} ({{currentUser.firstName}} {{currentUser.rol}})
+                      
+                  </li>
+               -->
+            </ul>
+      </div>
+    </nav>
+  </div>
+
+
+  <div *ngIf="currentUser.rol=='usuario'">
+    <nav class="navbar navbar-expand-lg circle " style="">
+      <a class="navbar-brand" [routerLink]="['/']">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+                <div *ngIf="navlista()=='http://localhost:4200/deuda'; else deuda">
+                    <a class="nav-link active" [routerLink]="['/deuda']">Deuda</a>
+                </div>
+                <ng-template #deuda>
+                    <a class="nav-link " [routerLink]="['/deuda']" >Deuda</a>
+                </ng-template>
+                
+
+            </li>
+            <li class="nav-item justify-content-end">
+                <div *ngIf="navcliente()=='http://localhost:4200/simulador'; else simulador">
+                    <a class="nav-link active" [routerLink]="['/simulador']">Simulador Credito</a>
+                </div>
+                <ng-template #simulador>
+                    <a class="nav-link active" [routerLink]="['/simulador']" style="background-color: transparent">Simulador Credito</a>
+                </ng-template>
+            </li>
+            
+                
+            <li class="nav-item justify-content-end">
+                    <div *ngIf="navcliente()=='http://localhost:4200/logout'; else logout">
+                        <a class="nav-link active" [routerLink]="['/logout']">Logout</a>
+                    </div>
+                    <ng-template #logout>
+                        <a class="nav-link active" [routerLink]="['/logout']" style="background-color: transparent">logout</a>
+                    </ng-template>
+            </li>
+              
+            </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+

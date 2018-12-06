@@ -1,0 +1,7 @@
+{
+    "/rest/v2/*": {
+      "target": "https://restcountries.eu",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }

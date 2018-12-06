@@ -1,0 +1,26 @@
+<div class="card text-center">
+        <div class="card-header">
+            Bienvenido Administrador {{currentUser.firstName}}
+        </div>
+        <div class="card-body" style="float: center;">
+            <h6>Usuarios Actualizados:</h6>
+            <div class="col-12">
+                <div class="card col-8 offset-2" *ngFor="let user of users" style="float: center; text-align: center; display:block;" >
+                    <div class="col-12" style="width:30%; height:30%; float:center; display:block;">
+                            <img class="card-img-top center-block" src="../../../assets/img/user.png"  alt="Tu foto">
+                    </div>
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{user.username}}</h5>
+                        <p class="card-text">({{user.firstName}} {{user.lastName}})</p>
+                        <h6 class="card-title">{{user.rol}}</h6>
+                    </div>
+                    <div class="card-footer">
+                        <a (click)="deleteUser(user.id)" class="text-danger">Eliminar</a>
+                    </div>
+                </div>  
+            </div>
+        </div> 
+        <br>
+        
+    </div>

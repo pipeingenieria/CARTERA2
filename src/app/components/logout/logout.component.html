@@ -1,0 +1,22 @@
+<div class="card text-center col-10 container-fluid">
+    <div class="card-header">
+        Log-Out
+    </div>
+    <div class="card-body" >
+        <h3 class="card-title">Hola {{currentUser.firstName}}!</h3>
+        <p class="card-text">Estas seguro que quieres salir?? ... En caso contrario selecciona las opciones del navegador para continuar.</p>
+      
+        
+        <small class="card-title">O Realmente desea salir??</small>
+        <p><strong><a [routerLink]="['/login']">Logout</a></strong></p>
+    </div>
+    <div class="card-footer text-muted">
+            <h6>Todos Los Usuarios Registrados:</h6>
+            <ul>
+                <li *ngFor="let user of users">
+                    {{user.username}} ({{user.firstName}} {{user.lastName}})
+                    <!-- - <a (click)="deleteUser(user.id)" class="text-danger">Eliminar</a> -->
+                </li>
+            </ul>
+    </div>
+</div>

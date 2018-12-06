@@ -1,0 +1,133 @@
+<div class="card text-center">
+    <div class="card-header">
+        <h2><strong>Agregar Nuevo Producto</strong></h2>
+        <small>Formulario Para agregar nuevos productos</small>
+    </div>
+    <div class="card-body">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <alert></alert>
+                
+                  <form (ngSubmit)="agregar()" name="myform" onsubmit="return validateForm()">
+                      <label>Nombre Producto</label>
+                      <input 
+                      type="text" 
+                      placeholder="Ingresa tu nombre"
+                      name="NombreProducto" 
+                      id="NombreProducto" class="form-control"
+                      [(ngModel)]="item.NombreProducto" required/>
+
+                      
+                      <label>Imagen del Producto</label>
+                      <select 
+                      placeholder="Imagen Producto"
+                      name="ImagenProducto" 
+                      id="ImagenProducto" class="form-control"
+                      [(ngModel)]="item.ImagenProducto" required>
+                        <option value="Televisor">Televisor</option>
+                        <option value="Computador">Computador</option>
+                        <option value="Nevera">Nevera</option>
+                        <option value="Celular">Celular</option>
+                        <option value="Equipo">Equipo de Sonido</option>
+                        <option value="Lavadora">Lavadora</option>
+                        <option value="Horno">Horno</option>
+                        <option value="PC">Pc Escritorio</option>
+                        <option value="Impresora">Impresora</option>
+                        <option value="Consola">Consola de Video</option>
+                        
+                      </select>
+
+                      <label>Caracteristicas</label>
+                      <textarea 
+                      type="textarea" 
+                      placeholder="Caracteristicas"
+                      name="Caracteristicas" 
+                      id="Caracteristicas" class="form-control"
+                      [(ngModel)]="item.Caracteristicas" required>
+                      </textarea>
+
+                      <br>
+                      <div class="row">
+                          <div class="col-6">
+                            <label>Precio</label>
+                            <input 
+                            type="text" 
+                            placeholder="Precio"
+                            name="Precio" 
+                            id="Precio" class="form-control"
+                            [(ngModel)]="item.Precio" required/>
+                          </div>
+                          <div class="col-6">
+                            <label>Fecha de Lanzamiento</label>
+                            <input 
+                            type="date" 
+                            placeholder="Fecha Lanzamiento"
+                            name="FechaLanzamiento" 
+                            id="FechaLanzamiento" class="form-control"
+                            [(ngModel)]="item.FechaLanzamiento" required/>
+                          </div>
+                      </div>
+                      <br>
+                      
+                      <div ngModelGroup="phoneNumbers"></div>
+                      <label>Correo del Fabricante</label>
+                      <input 
+                      type="text" 
+                      placeholder="Correo del Fabricante"
+                      name="CorreoFabricante" 
+                      id="CorreoFabricante" class="form-control"
+                      [(ngModel)]="item.CorreoFabricante" ngModel required/>
+
+              <!-- Utilizando WEB SERVICE https://restcountries.eu/rest/v2 -->
+                      <label>Pais de Fabricacion</label>
+                      <select 
+                      type="text" 
+                      placeholder="Pais de Fabricacion"
+                      name="PaisFabricacion" 
+                      id="PaisFabricacion" class="form-control"
+                      [(ngModel)]="item.PaisFabricacion" required>
+                        
+                        <option *ngFor="let country of allCountries" value="{{country.name}}">{{country.name | uppercase}}</option>
+                        
+                      </select>
+
+                      <br>
+                      <div class="row">
+                          <div class="col-6 ">
+                            <label>Unidades Disponibles</label>
+                            <input 
+                            type="number" 
+                            placeholder="0"
+                            name="UnidadesDisponibles" 
+                            id="UnidadesDisponibles" class="form-control"
+                            [(ngModel)]="item.UnidadesDisponibles" required/>
+                          </div>
+                          <div class="col-6">
+                            <label>Unidades Vendidas</label>
+                            <input 
+                            type="number" 
+                            placeholder="0"
+                            name="UnidadesVendidas" 
+                            id="UnidadesVendidas" class="form-control"
+                            [(ngModel)]="item.UnidadesVendidas" required/>
+                          </div>
+                      </div>
+
+                    
+                      <button class="btn btn-warning mt-3" type="submit">Agregar</button>
+                  </form>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      ** Debe llenar todos los datos
+    </div>
+</div>
+    
+  
+  
+
+
+      

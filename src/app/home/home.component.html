@@ -1,0 +1,23 @@
+﻿<router-outlet></router-outlet>
+
+
+<div *ngIf="checkSomething()">
+    <div class="card text-center">
+            <div class="card-header">
+                Bienvenido {{currentUser.firstName}} 
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Hola {{currentUser.firstName}}!</h3>
+                <h5 class="card-title">Te has Logueado correctamente como <strong>{{currentUser.rol}}</strong> en la plataforma</h5>
+               <p class="card-text"> desplazate hacia arriba para ver las deudas, simular creditos y mucho mas.
+                    Puedes Editarlos o Eliminarlos.<br> 
+                        O Selecciona la pestaña Logout para una salida segura.</p>
+            </div>
+            
+        </div>
+</div>
+
+
+                            
+                       
+

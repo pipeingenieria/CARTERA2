@@ -1,0 +1,96 @@
+<p-dataView #dv [value]="items" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="NombreProducto" 
+[sortField]="sortField" [sortOrder]="sortOrder">
+<p-header>
+    <div class="ui-helper-clearfix">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4">
+                <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Ordenar por" (onChange)="onSortChange($event)" [autoWidth]="true" [style]="{'min-width':'15em'}"></p-dropdown>
+              
+            </div>
+            <div class="ui-g-6 ui-md-4 filter-container">
+                <div style="position:relative">
+                    <input type="search" pInputText placeholder="Busqueda por Nombre" (keyup)="dv.filter($event.target.value)">
+                </div>
+            </div>
+            <div class="ui-g-6 ui-md-4" style="text-align:right">
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </div>
+    </div>
+</p-header>
+<ng-template let-item pTemplate="listItem">
+    <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+        <div class="row float-right">
+                <div class="ui-g-12 ui-md-12 search-icon float-right">
+                        <div class="row">
+                            <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, item)"></button>
+                            <button class="btn btn-danger" (click)="eliminar(item)">X</button>
+                    
+                        </div>
+                    </div>
+            <div class="ui-g-12 ui-md-4" style="text-align:center">
+                <img src="../../../assets/img/{{item.ImagenProducto}}.jpg">
+            </div>
+            <div class="ui-g-12 ui-md-8 item-details">
+                <div class="ui-g">
+                    <div class="ui-g-6 ui-sm-6">Nombre del Producto: </div>
+                    <div class="ui-g-6 ui-sm-6"><b>{{item.Nombre}}</b></div>
+
+                    <div class="ui-g-6 ui-sm-6">Caracteristicas: </div>
+                    <div class="ui-g-6 ui-sm-6"><b>{{item.Cedula}}</b></div>
+
+                    <div class="ui-g-6 ui-sm-6">Precio: </div>
+                    <div class="ui-g-6 ui-sm-6"><b>{{item.Precio/1000 | currency:'USD':true:'2.3-3'}}</b></div>
+
+                    <div class="ui-g-6 ui-sm-6">Correo De Fabricante: </div>
+                    <div class="ui-g-6 ui-sm-6"><b>{{item.CorreoFabricante}}</b></div>
+
+                    <div class="ui-g-6 ui-sm-6">Fecha de Lanzamiento: </div>
+                    <div class="ui-g-6 ui-sm-6"><b>{{item.FechaLanzamiento}}</b></div>
+
+                    <div class="ui-g-6 ui-sm-6">Pais de Fabricacion: </div>
+                    <div class="ui-g-6 ui-sm-6"><b>{{item.PaisFabricacion}}</b></div>
+
+                    <div class="ui-g-6 ui-sm-6">Unidades Vendidas: </div>
+                    <div class="ui-g-6 ui-sm-6"><b>{{item.UnidadesVendidas}}</b></div>
+
+                    <div class="ui-g-6 ui-sm-6">Unidades Disponibles: </div>
+                    <div class="ui-g-6 ui-sm-6"><b>{{item.UnidadesDisponibles}}</b></div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</ng-template>
+<ng-template let-item pTemplate="gridItem">
+    <div style="padding:.5em" class="ui-g-12 ui-md-3">
+        <p-panel [header]="item.NombreProducto" [style]="{'text-align':'center'}">
+           <!--  <img src="assets/showcase/images/demo/car/{{car.brand}}.png" width="60"> -->
+           <img src="../../../assets/img/{{item.ImagenProducto}}.jpg" style="width:120px; height: 150px;">
+            <div class="car-detail">{{item.FechaLanzamiento}} - {{item.Precio/1000 | currency:'USD':true:'2.3-3'}} - {{item.Caracteristicas}}</div>
+            <hr class="ui-widget-content" style="border-top:0">
+            <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, item)" style="margin-top:0"></button>
+        </p-panel>
+    </div>
+</ng-template>
+</p-dataView>
+
+<p-dialog header="Detalle de Producto" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="225" (onAfterHide)="onDialogHide()">
+<div class="ui-g" *ngIf="selectedCar">
+    <div class="ui-g-12" style="text-align:center">
+        <!-- <img src="assets/showcase/images/demo/car/{{selectedCar.brand}}.png"> -->
+        <img class="img-fluid"  src="../../../assets/img/{{selectedCar.ImagenProducto}}.jpg">
+    </div>
+    <div class="ui-g-6">Producto: </div>
+    <div class="ui-g-6">{{selectedCar.NombreProducto}}</div>
+
+    <div class="ui-g-6">Precio: </div>
+    <div class="ui-g-6">{{selectedCar.Precio/1000 | currency:'USD':true:'2.3-3'}}</div>
+
+    <div class="ui-g-6">Año De Lanzamiento: </div>
+    <div class="ui-g-6">{{selectedCar.FechaLanzamiento}}</div>
+
+    <div class="ui-g-6">Pais: </div>
+    <div class="ui-g-6">{{selectedCar.PaisFabricacion}}</div>
+</div>
+</p-dialog>
