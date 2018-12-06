@@ -59,7 +59,8 @@ import { FacturaComponent } from './components/factura/factura.component';
 import { PagoComponent } from './components/pago/pago.component';
 import { FacturacionComponent } from './components/facturacion/facturacion.component';
 import { ListaComponent } from './components/lista/lista.component';
-import { CreditoComponent } from './components/credito/credito.component'
+import { CreditoComponent } from './components/credito/credito.component';
+import { SimuladorComponent } from './components/simulador/simulador.component'
 @NgModule({
     imports: [
         //BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -103,7 +104,8 @@ import { CreditoComponent } from './components/credito/credito.component'
         PagoComponent ,
         FacturacionComponent ,
         ListaComponent ,
-        CreditoComponent    //
+        CreditoComponent ,
+        SimuladorComponent   //
              
     ],
     providers: [

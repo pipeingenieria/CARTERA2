@@ -5,4 +5,6 @@
     firstName: string;
     lastName: string;
     rol: string;
+    cedula: string;
+    telefono: string;
 }

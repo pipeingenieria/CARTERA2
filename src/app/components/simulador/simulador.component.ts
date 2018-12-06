@@ -6,11 +6,11 @@ import { RestHttpService } from '../../rest-http.service';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-credito',
-  templateUrl: './credito.component.html',
-  styleUrls: ['./credito.component.css']
+  selector: 'app-simulador',
+  templateUrl: './simulador.component.html',
+  styleUrls: ['./simulador.component.css']
 })
-export class CreditoComponent implements OnInit {
+export class SimuladorComponent implements OnInit {
 
   item:any = {
     cuota: "",
