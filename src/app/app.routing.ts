@@ -16,6 +16,7 @@ import { FacturacionComponent } from './components/facturacion/facturacion.compo
 import { ListaComponent } from './components/lista/lista.component'
 import { CreditoComponent } from './components/credito/credito.component'
 import { SimuladorComponent } from './components/simulador/simulador.component'
+import { DeudaComponent } from './components/deuda/deuda.component'
 
 
 
@@ -69,6 +70,10 @@ const appRoutes: Routes = [
         {
             path : 'simulador',
             component: SimuladorComponent
+        },
+        {
+            path : 'deuda',
+            component: DeudaComponent
         },
         
     ] },

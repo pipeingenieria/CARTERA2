@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav nav-pills">
             <li class="nav-item">
-                <div *ngIf="navlista()=='http://localhost:4200/deuda'; else deuda">
+                <div *ngIf="navlista()=='/deuda'; else deuda">
                     <a class="nav-link active" [routerLink]="['/deuda']">Deuda</a>
                 </div>
                 <ng-template #deuda>
@@ -24,15 +24,15 @@
 
             </li>
             <li class="nav-item justify-content-end">
-                <div *ngIf="navcliente()=='http://localhost:4200/credito'; else credito">
+                <div *ngIf="navlista()=='/credito'; else credito">
                     <a class="nav-link active" [routerLink]="['/credito']">Credito</a>
                 </div>
                 <ng-template #credito>
-                    <a class="nav-link active" [routerLink]="['/credito']" style="background-color: transparent">Credito</a>
+                    <a class="nav-link" [routerLink]="['/credito']" style="background-color: transparent">Credito</a>
                 </ng-template>
             </li>
             <li class="nav-item">
-                    <div *ngIf="navlista()=='http://localhost:4200/pagos'; else pagos">
+                    <div *ngIf="navlista()=='/pagos'; else pagos">
                         <a class="nav-link active" [routerLink]="['/pagos']">Pagos</a>
                     </div>
                     <ng-template #pagos>
@@ -40,7 +40,7 @@
                     </ng-template>
                 </li>
                 <li class="nav-item justify-content-end">
-                    <div *ngIf="navcliente()=='http://localhost:4200/register'; else register">
+                    <div *ngIf="navlista()=='/register'; else register">
                         <a class="nav-link active" [routerLink]="['/register']">Registro</a>
                     </div>
                     <ng-template #register>
@@ -48,7 +48,7 @@
                     </ng-template>
                 </li>
                 <li class="nav-item justify-content-end">
-                    <div *ngIf="navcliente()=='http://localhost:4200/registro'; else registro">
+                    <div *ngIf="navlista()=='/registro'; else registro">
                         <a class="nav-link active" [routerLink]="['/registro']">Listado Usuarios</a>
                     </div>
                     <ng-template #registro>
@@ -56,7 +56,7 @@
                     </ng-template>
             </li>
             <li class="nav-item justify-content-end">
-                    <div *ngIf="navcliente()=='http://localhost:4200/logout'; else logout">
+                    <div *ngIf="navlista()=='/logout'; else logout">
                         <a class="nav-link active" [routerLink]="['/logout']">Logout</a>
                     </div>
                     <ng-template #logout>
@@ -85,7 +85,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="nav nav-pills">
             <li class="nav-item">
-                <div *ngIf="navlista()=='http://localhost:4200/deuda'; else deuda">
+                <div *ngIf="navlista()=='/deuda'; else deuda">
                     <a class="nav-link active" [routerLink]="['/deuda']">Deuda</a>
                 </div>
                 <ng-template #deuda>
@@ -95,7 +95,7 @@
 
             </li>
             <li class="nav-item justify-content-end">
-                <div *ngIf="navcliente()=='http://localhost:4200/credito'; else credito">
+                <div *ngIf="navlista()=='/credito'; else credito">
                     <a class="nav-link active" [routerLink]="['/credito']">Credito</a>
                 </div>
                 <ng-template #credito>
@@ -103,7 +103,7 @@
                 </ng-template>
             </li>
             <li class="nav-item">
-                    <div *ngIf="navlista()=='http://localhost:4200/pagos'; else pagos">
+                    <div *ngIf="navlista()=='/pagos'; else pagos">
                         <a class="nav-link active" [routerLink]="['/pagos']">Pagos</a>
                     </div>
                     <ng-template #pagos>
@@ -111,7 +111,7 @@
                     </ng-template>
                 </li>
                 <li class="nav-item justify-content-end">
-                    <div *ngIf="navcliente()=='http://localhost:4200/register'; else register">
+                    <div *ngIf="navlista()=='/register'; else register">
                         <a class="nav-link active" [routerLink]="['/register']">Registro</a>
                     </div>
                     <ng-template #register>
@@ -120,7 +120,7 @@
                 </li>
                 
             <li class="nav-item justify-content-end">
-                    <div *ngIf="navcliente()=='http://localhost:4200/logout'; else logout">
+                    <div *ngIf="navlista()=='http://localhost:4200/logout'; else logout">
                         <a class="nav-link active" [routerLink]="['/logout']">Logout</a>
                     </div>
                     <ng-template #logout>
@@ -148,7 +148,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="nav nav-pills">
             <li class="nav-item">
-                <div *ngIf="navlista()=='http://localhost:4200/deuda'; else deuda">
+                <div *ngIf="navlista()=='/deuda'; else deuda">
                     <a class="nav-link active" [routerLink]="['/deuda']">Deuda</a>
                 </div>
                 <ng-template #deuda>
@@ -158,7 +158,7 @@
 
             </li>
             <li class="nav-item justify-content-end">
-                <div *ngIf="navcliente()=='http://localhost:4200/simulador'; else simulador">
+                <div *ngIf="navlista()=='/simulador'; else simulador">
                     <a class="nav-link active" [routerLink]="['/simulador']">Simulador Credito</a>
                 </div>
                 <ng-template #simulador>
@@ -168,7 +168,7 @@
             
                 
             <li class="nav-item justify-content-end">
-                    <div *ngIf="navcliente()=='http://localhost:4200/logout'; else logout">
+                    <div *ngIf="navlista()=='/logout'; else logout">
                         <a class="nav-link active" [routerLink]="['/logout']">Logout</a>
                     </div>
                     <ng-template #logout>

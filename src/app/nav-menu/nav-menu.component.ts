@@ -17,6 +17,7 @@ export class NavMenuComponent {
   isExpanded = false;
   currentUser: User;
     users: User[] = [];
+    url=location.protocol+"//"+location.hostname+":"+location.port+"/";
 
   constructor(@Inject(DOCUMENT) private document: Document, private userService: UserService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -67,7 +68,9 @@ export class NavMenuComponent {
   } 
 
   navlista(){
-    return this.document.location;
+    console.log(location.pathname);
+    return location.pathname;
+    
   } 
   
   deleteUser(id: number) {
