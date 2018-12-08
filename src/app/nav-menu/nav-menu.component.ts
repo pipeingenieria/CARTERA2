@@ -54,7 +54,7 @@ export class NavMenuComponent {
     }); */
   }
   checkSomething(){
-    if(this.document.location.href=="http://localhost:4200/login"){ 
+    if(this.document.location.href==location.protocol+"//"+location.hostname+":"+location.port+"/login"){ 
         return false;
     }else{
         return true;
