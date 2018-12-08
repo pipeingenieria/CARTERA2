@@ -68,7 +68,7 @@ export class NavMenuComponent {
   } 
 
   navlista(){
-    console.log(location.pathname);
+    //console.log(location.pathname);
     return location.pathname;
     
   } 

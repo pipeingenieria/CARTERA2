@@ -15,6 +15,8 @@ export class ConexionService {
   private itemDoc: AngularFirestoreDocument<Item>;
 
   constructor(private afs: AngularFirestore) {
+    /* let size:any="";
+    afs.collection('items', ref => ref.where('size', '==', size)).valueChanges(); */
     this.itemsCollection = afs.collection<Item>('items');
     this.items = this.itemsCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
