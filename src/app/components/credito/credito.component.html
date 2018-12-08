@@ -1,6 +1,6 @@
 <div class="card text-center col-10 container-fluid">
     <div class="card-header">
-        <h2><strong>Agregar Nuevo Prestamo</strong></h2>
+        <h2><strong>Generar Nuevo Credito</strong></h2>
         <small>Formulario Para agregar nuevo Prestamo</small>
     </div>
     <div class="card-body">
@@ -12,8 +12,14 @@
                   <form (ngSubmit)="agregar()" name="myform" >
 
                     <h4>Cedula</h4>
-                    <input type="text" name="Cedula" id="Cedula" class="form-control"
-                    >
+                    <!-- <input type="text" name="Cedula" id="Cedula" class="form-control"
+                    > -->
+                    <select 
+                        placeholder="Imagen Producto"
+                        id="Cedula" 
+                        name="Cedula">
+                        <option value="{{user.cedula}}" *ngFor="let user of users; let i = index">{{user.firstName}} {{user.lastName}}</option>
+                    </select>
                     <br>
                     <br>
                     <h4>#-Factura</h4>

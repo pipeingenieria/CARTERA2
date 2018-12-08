@@ -61,6 +61,8 @@
                             
                         <input type="text" formControlName="firstName" class="form-control" 
                         [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                        id="firstName"
+                        name="firstName"
                         placeholder="Nombres" />
                         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
                             <div *ngIf="f.firstName.errors.required">su nombre es requerido</div>
@@ -69,6 +71,7 @@
                     <div class="form-group">
                             <input type="text" formControlName="lastName" class="form-control" 
                             [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                            id="lastName"
                             placeholder="Apellido" />
                             <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                                 <div *ngIf="f.lastName.errors.required">Sus apellidos son requeridos</div>
@@ -78,6 +81,7 @@
                             
                             <input type="text" formControlName="cedula" class="form-control" 
                             [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }"
+                            id="cedula"
                             placeholder="Cedula" />
                             <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
                                 <div *ngIf="f.cedula.errors.required">Usuario es requerido(Para Loguearse en la Plataforma.)</div>
@@ -87,6 +91,7 @@
                             
                             <input type="text" formControlName="telefono" class="form-control" 
                             [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"
+                            id="telefono"
                             placeholder="Telefono" />
                             <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
                                 <div *ngIf="f.telefono.errors.required">Usuario es requerido(Para Loguearse en la Plataforma.)</div>
@@ -96,6 +101,7 @@
                             
                             <input type="text" formControlName="username" class="form-control" 
                             [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                            id="username"
                             placeholder="Usuario" />
                             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                                 <div *ngIf="f.username.errors.required">Usuario es requerido(Para Loguearse en la Plataforma.)</div>
@@ -104,6 +110,7 @@
                         <div class="form-group">
                                 <input type="password" formControlName="password" class="form-control" 
                                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                id="password"
                                 placeholder="Pasword" />
                                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                     <div *ngIf="f.password.errors.required">La contraseña es requerida(Para Loguearse en la Plataforma.)</div>
@@ -113,6 +120,7 @@
                         <div class="form-group">
                                 <input type="text" formControlName="rol" class="form-control" 
                                 [ngClass]="{ 'is-invalid': submitted && f.rol.errors }"
+                                id="rol"
                                 placeholder="rol" />
                                 <div *ngIf="submitted && f.rol.errors" class="invalid-feedback">
                                     <div *ngIf="f.rol.errors.required">La contraseña es requerida(Para Loguearse en la Plataforma.)</div>

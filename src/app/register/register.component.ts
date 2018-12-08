@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, UserService } from '../_services';
+import * as $ from 'jquery';
 
 @Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
@@ -53,6 +54,16 @@ export class RegisterComponent implements OnInit {
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
+
+        this.servicio3.agregarItem(this.item);
+        this.item.cedula=$("#cedula").val();
+        this.item.firstName=$("#firstName").val();
+        this.item.lastName=$("#lastName").val();
+        this.item.password=$("#password").val();
+        this.item.rol=$("#rol").val();
+        this.item.telefono=$("#telefono").val();
+        this.item.username=$("#username").val();
+
         this.submitted = true;
 
         // stop here if form is invalid
@@ -73,14 +84,7 @@ export class RegisterComponent implements OnInit {
                     this.loading = false;
                 });
 
-                this.servicio3.agregarItem(this.item);
-                this.item.cedula=$("#factura").val();
-                this.item.firstName=$("#Cedula").val();
-                this.item.lastName=$("#factura").val();
-                this.item.password=$("#Cedula").val();
-                this.item.rol=$("#factura").val();
-                this.item.telefono=$("#Cedula").val();
-                this.item.username=$("#factura").val();
+                
     }
 
     login(){

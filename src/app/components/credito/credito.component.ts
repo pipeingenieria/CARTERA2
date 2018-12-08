@@ -3,6 +3,12 @@ import { ConexionCreditoService } from 'src/app/_services/conexionCredito.servic
 import { ConexionFacturaService } from 'src/app/_services/conexionFactura.service';
 import { RestService } from '../../rest.service';
 import { RestHttpService } from '../../rest-http.service';
+
+import { ConexionClienteService } from 'src/app/_services/conexionCliente.service';
+import { ConexionClienteService1 } from 'src/app/_services/conexionCliente.service.1';
+import { first } from 'rxjs/operators';
+import { UserService } from '../../_services';
+import { User } from '../../_models';
 import * as $ from 'jquery';
 
 @Component({
@@ -29,12 +35,19 @@ export class CreditoComponent implements OnInit {
     factura: "",
   }
 
+  items2:any;
+  users: User[] = [];
+
   
-  constructor(private servicio: ConexionCreditoService, private servicio2: ConexionFacturaService) { }
+  constructor(private servicio: ConexionCreditoService, 
+              private servicio2: ConexionFacturaService,
+              private conexion:ConexionClienteService, 
+              private conexion2:ConexionClienteService1,
+              private userService: UserService,) { }
 
   ngOnInit() {
-
-  
+    
+      this.loadAllUsers();
     
 
   }
@@ -50,16 +63,18 @@ export class CreditoComponent implements OnInit {
 
     var cuotas:any = $("#cuotas").val();
     var subtotal:any = $("#sub-total").val();
+    var cedula:any = $("#Cedula").val();
+    var factura:any = $("#factura").val();
     var resul = subtotal / cuotas;
 
-    for (var i = 0; i < cuotas; i++) {
+    for (var i = 0; i < parseInt(cuotas)+1; i++) {
 
           var res = subtotal-resul*(i+1);
 
           this.servicio.agregarItem(this.item);
           this.item.fecha='11/05/2018(Prueba)';
-          this.item.Cedula='';
-          this.item.factura='';
+          this.item.Cedula=cedula;
+          this.item.factura=factura;
           this.item.restante=resul.toFixed(2);
           this.item.monto=res.toFixed(2);
           this.item.numeroCuota=(i+1);
@@ -203,6 +218,12 @@ export class CreditoComponent implements OnInit {
     $("#cuota1").val(cuotas);
     
 
-}
+  }
+
+  private loadAllUsers() {
+    this.userService.getAll().pipe(first()).subscribe(users => { 
+        this.users = users; 
+    });
+  }
 
 }
