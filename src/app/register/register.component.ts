@@ -5,6 +5,7 @@ import { ConexionClienteService } from 'src/app/_services/conexionCliente.servic
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { User } from '../_models';
 
 import { AlertService, UserService } from '../_services';
 import * as $ from 'jquery';
@@ -14,6 +15,9 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
+    users: User[] = [];
+    currentUser: User;
+
 
     item:any = {
         
@@ -36,7 +40,9 @@ export class RegisterComponent implements OnInit {
         private servicio: ConexionCreditoService,
         private servicio2: ConexionFacturaService,
         private servicio3: ConexionClienteService,
-        private alertService: AlertService) { }
+        private alertService: AlertService) { 
+            this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
@@ -48,13 +54,14 @@ export class RegisterComponent implements OnInit {
             cedula: ['', Validators.required],
             telefono: ['', Validators.required],
         });
+        this.loadAllUsers();
     }
 
     // convenience getter for easy access to form fields
     get f() { return this.registerForm.controls; }
 
     onSubmit() {
-
+        var rol:any = $("#rol").val();
         this.servicio3.agregarItem(this.item);
         this.item.cedula=$("#cedula").val();
         this.item.firstName=$("#firstName").val();
@@ -77,7 +84,9 @@ export class RegisterComponent implements OnInit {
             .subscribe(
                 data => {
                     this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/logout']);
+                    /* location.reload(); */
+                    /* alert("Cliente Registrado correctamente"); */
                 },
                 error => {
                     this.alertService.error(error);
@@ -90,6 +99,17 @@ export class RegisterComponent implements OnInit {
     login(){
        
         this.router.navigate(['/login']);
+    
+    }
+
+    admin(){
+       
+        if(this.currentUser.rol=="admin"){
+            return true;
+        }else{
+            
+            return false;
+        }
     
     }
 
@@ -184,4 +204,10 @@ export class RegisterComponent implements OnInit {
         this.item.cuota11='';
         this.item.cuota12=''; */
       }
+
+      private loadAllUsers() {
+        this.userService.getAll().pipe(first()).subscribe(users => { 
+            this.users = users; 
+        });
+    }
 }

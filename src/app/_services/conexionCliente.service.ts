@@ -41,7 +41,7 @@ export class ConexionClienteService {
 
   eliminarItem(item){
 
-    this.itemDoc = this.afs.doc<Item>(`Cliente/${item.id}`);
+    this.itemDoc = this.afs.doc<Item>(`Credito/${item.id}`);
     this.itemDoc.delete();
   }
 

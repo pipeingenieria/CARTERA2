@@ -12,19 +12,20 @@
                   <select 
                       placeholder="Imagen Producto"
                       id="prueba" 
-                      name="prueba">
+                      name="prueba"
+                      class="form-control">
                         <option value="{{user.cedula}}" *ngFor="let user of users; let i = index">{{user.firstName}} {{user.lastName}}</option>
                   </select>
                   <br>
                   <!-- <input type="text" id="prueba" name="prueba" value="1017170518"> -->
                   <button class="btn btn-success mt-3" type="button" (click)="validateForm()" >Buscar</button>
                   <div id="pagos">
-                    <table class="table">
-                      <thead>
+                    <table class="table table-hover table-dark table-responsive">
+                      <thead class="thead-light">
                         <th>Factura</th>
-                        <th>concepto</th>
-                        <th>monto</th>
-                        <th>monto restante</th>
+                        <th>Cuota</th>
+                        <th>Monto</th>
+                        <th>Monto restante</th>
                         <th>fecha pago</th>
                       </thead>
                       <tbody>
@@ -33,7 +34,7 @@
                             {{item.factura}}
                           </td>
                           <td>
-                          Cuota numero: {{item.numeroCuota}}, de {{item.cuota}}
+                          {{item.numeroCuota}}
                           </td>
                           <td>
                             {{item.monto}}
@@ -56,6 +57,4 @@
     </div>
   </div>
 
-  <div class="alert alert-primary" role="alert">
-    A simple primary alert—check it out!
-  </div>
+  

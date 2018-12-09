@@ -11,9 +11,11 @@
                     </div>
                     
                     <div class="card-body">
-                        <h5 class="card-title">{{user.username}}</h5>
-                        <p class="card-text">({{user.firstName}} {{user.lastName}})</p>
-                        <h6 class="card-title">{{user.rol}}</h6>
+                        <h5 class="card-title">User: {{user.username}}</h5>
+                        <p class="card-text">Nombre: ({{user.firstName}} {{user.lastName}})</p>
+                        <p class="card-text">CC: {{user.cedula}}</p>
+                        <p class="card-text">Telefono: {{user.telefono}}</p>
+                        <p class="card-text">Rol: {{user.rol}}</p>
                     </div>
                     <div class="card-footer">
                         <a (click)="deleteUser(user.id)" class="text-danger">Eliminar</a>

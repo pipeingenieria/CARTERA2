@@ -48,106 +48,141 @@
         </div>
     </div>
  -->
-
-
-
-        <div class="page-container"  style="text-align:center; color:aqua" >
-            <br>
-            <h1>Registro de Usuarios</h1>
-            <br>
-            <br>
-            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                            
-                        <input type="text" formControlName="firstName" class="form-control" 
-                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
-                        id="firstName"
-                        name="firstName"
-                        placeholder="Nombres" />
-                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                            <div *ngIf="f.firstName.errors.required">su nombre es requerido</div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                            <input type="text" formControlName="lastName" class="form-control" 
-                            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
-                            id="lastName"
-                            placeholder="Apellido" />
-                            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                                <div *ngIf="f.lastName.errors.required">Sus apellidos son requeridos</div>
-                            </div>
-                    </div>
-                    <div class="form-group">
-                            
-                            <input type="text" formControlName="cedula" class="form-control" 
-                            [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }"
-                            id="cedula"
-                            placeholder="Cedula" />
-                            <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
-                                <div *ngIf="f.cedula.errors.required">Usuario es requerido(Para Loguearse en la Plataforma.)</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            
-                            <input type="text" formControlName="telefono" class="form-control" 
-                            [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"
-                            id="telefono"
-                            placeholder="Telefono" />
-                            <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
-                                <div *ngIf="f.telefono.errors.required">Usuario es requerido(Para Loguearse en la Plataforma.)</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            
-                            <input type="text" formControlName="username" class="form-control" 
-                            [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
-                            id="username"
-                            placeholder="Usuario" />
-                            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                                <div *ngIf="f.username.errors.required">Usuario es requerido(Para Loguearse en la Plataforma.)</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                                <input type="password" formControlName="password" class="form-control" 
-                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-                                id="password"
-                                placeholder="Pasword" />
-                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                                    <div *ngIf="f.password.errors.required">La contraseña es requerida(Para Loguearse en la Plataforma.)</div>
-                                    <div *ngIf="f.password.errors.minlength">La contraseña debe tener por lo menos 6 caracteres!!</div>
-                                </div>
-                        </div>
-                        <div class="form-group">
-                                <input type="text" formControlName="rol" class="form-control" 
-                                [ngClass]="{ 'is-invalid': submitted && f.rol.errors }"
-                                id="rol"
-                                placeholder="rol" />
-                                <div *ngIf="submitted && f.rol.errors" class="invalid-feedback">
-                                    <div *ngIf="f.rol.errors.required">La contraseña es requerida(Para Loguearse en la Plataforma.)</div>
-                                    <div *ngIf="f.rol.errors.minlength">La contraseña debe tener por lo menos 6 caracteres!!</div>
-                                </div>
-                        </div>
-               <!--  <input type="text" name="username" class="username" placeholder="Username">
-                <input type="password" name="password" class="password" placeholder="Password"> -->
-                <div class="error"><span>+</span></div>
-                <div class="form-group">
-                        <button [disabled]="loading" class="btn btn-primary">Registrar</button>
-                        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                        <!-- <button (click)="login()" class="btn btn-link">Cancelar</button> -->
-                </div>
-            </form>
-            <!-- <div class="connect">
-                <p >O conectar con:</p>
-                <p>
-                    <a class="facebook" href=""></a>
-                    <a class="twitter" href=""></a>
-                </p>
-            </div> -->
+ <div class="card text-center col-10 container-fluid">
+        <div class="card-header">
+            <h2><strong>Ingresar Nuevos Clientes</strong></h2>
+            <small>Formulario Para el registro de nuevos clientes</small>
         </div>
+        <div class="card-body">
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <alert></alert>
 
-        <!-- Javascript -->
-        <script src="../../../assets/js/jquery-1.8.2.min.js"></script>
-        <script src="../../../assets/js/supersized.3.2.7.min.js"></script>
-        <script src="../../../assets/js/supersized-init.js"></script>
-        <script src="../../../assets/js/scripts.js"></script>
+
+                    
+                        <br>
+                        <h1 style="text-align:center; color:aqua">Formulario de Registro</h1>
+                        <br>
+                       
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label>Nombre Completo</label>    
+                                    <input type="text" formControlName="firstName" class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                                    id="firstName"
+                                    name="firstName"
+                                    placeholder="Nombres" />
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">su nombre es requerido</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label>Apellidos</label> 
+                                        <input type="text" formControlName="lastName" class="form-control" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+                                        id="lastName"
+                                        placeholder="Apellido" />
+                                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.lastName.errors.required">Sus apellidos son requeridos</div>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                        <label>Cedula</label> 
+                                        <input type="text" formControlName="cedula" class="form-control" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.cedula.errors }"
+                                        id="cedula"
+                                        placeholder="Cedula" />
+                                        <div *ngIf="submitted && f.cedula.errors" class="invalid-feedback">
+                                            <div *ngIf="f.cedula.errors.required">Cedula es requerido(Para Loguearse en la Plataforma.)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Telefono</label> 
+                                        <input type="text" formControlName="telefono" class="form-control" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"
+                                        id="telefono"
+                                        placeholder="Telefono" />
+                                        <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+                                            <div *ngIf="f.telefono.errors.required">Telefono es requerido(Para Loguearse en la Plataforma.)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Usuario (Para Login)</label> 
+                                        <input type="text" formControlName="username" class="form-control" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+                                        id="username"
+                                        placeholder="Usuario" />
+                                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                            <div *ngIf="f.username.errors.required">Usuario es requerido(Para Loguearse en la Plataforma.)</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label>Clave (Para Login)</label>
+                                            <input type="password" formControlName="password" class="form-control" 
+                                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                            id="password"
+                                            placeholder="Pasword" />
+                                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.password.errors.required">La contraseña es requerida(Para Loguearse en la Plataforma.)</div>
+                                                <div *ngIf="f.password.errors.minlength">La contraseña debe tener por lo menos 6 caracteres!!</div>
+                                            </div>
+                                    </div>
+                                    <div class="form-group" *ngIf="admin(); else rol">
+                                            <label>Rol (Para Plataforma)</label>
+                                            <input type="text" formControlName="rol" class="form-control" 
+                                            [ngClass]="{ 'is-invalid': submitted && f.rol.errors }"
+                                            id="rol"
+                                            placeholder="rol" />
+                                            <div *ngIf="submitted && f.rol.errors" class="invalid-feedback">
+                                                <div *ngIf="f.rol.errors.required">El rol es necesario(Para Loguearse en la Plataforma.)</div>
+                                                <div *ngIf="f.rol.errors.minlength">La contraseña debe tener por lo menos 6 caracteres!!</div>
+                                            </div>
+                                    </div>
+                                    <ng-template #rol>
+                                        <label>Rol (Para Plataforma)</label>    
+                                        <select 
+                                            formControlName="rol" class="form-control"
+                                            [ngClass]="{ 'is-invalid': submitted && f.rol.errors }"
+                                            placeholder="Imagen Producto"
+                                            id="rol"
+                                            placeholder="rol">
+                                              <option value="usuario" >usuario</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.rol.errors" class="invalid-feedback">
+                                                <div *ngIf="f.rol.errors.required">El rol es necesario(Para Loguearse en la Plataforma.)</div>
+                                                <div *ngIf="f.rol.errors.minlength">La contraseña debe tener por lo menos 6 caracteres!!</div>
+                                            </div>
+                                    </ng-template>
+                        <!--  <input type="text" name="username" class="username" placeholder="Username">
+                            <input type="password" name="password" class="password" placeholder="Password"> -->
+                            <div class="error"><span>+</span></div>
+                            <div class="form-group">
+                                    <button [disabled]="loading" class="btn btn-primary">Registrar</button>
+                                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                    <!-- <button (click)="login()" class="btn btn-link">Cancelar</button> -->
+                            </div>
+                        </form>
+                        <!-- <div class="connect">
+                            <p >O conectar con:</p>
+                            <p>
+                                <a class="facebook" href=""></a>
+                                <a class="twitter" href=""></a>
+                            </p>
+                        </div> -->
+                    
+
+                    <!-- Javascript -->
+                    <script src="../../../assets/js/jquery-1.8.2.min.js"></script>
+                    <script src="../../../assets/js/supersized.3.2.7.min.js"></script>
+                    <script src="../../../assets/js/supersized-init.js"></script>
+                    <script src="../../../assets/js/scripts.js"></script>
+                </div>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            ** Debe llenar todos los datos
+          </div>
+        </div>
+      
 

@@ -1,3 +1,66 @@
-<p>
-  pago works!
-</p>
+<div class="card text-center col-10 container-fluid">
+    <div class="card-header">
+        <h2><strong>Pagar Cuotas Pendientes</strong></h2>
+        <small>Formulario Para generar pagos</small>
+    </div>
+    <div class="card-body">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <alert></alert>
+                    <h2><strong>Selecciona Cliente: </strong></h2>
+                    <select 
+                        placeholder="Imagen Producto"
+                        id="prueba" 
+                        name="prueba"
+                        class="form-control">
+                          <option value="{{user.cedula}}" *ngFor="let user of users; let i = index">{{user.firstName}} {{user.lastName}}</option>
+                    </select>
+                    <br>
+                    <!-- <input type="text" id="prueba" name="prueba" value="1017170518"> -->
+                    <button class="btn btn-success mt-3" type="button" (click)="validateForm()" >Buscar</button>
+                    <br>
+                    <h2><strong>Cuentas por pagar:</strong></h2>
+                    <div id="pagos">
+                      <table class="table table-hover table-dark table-responsive">
+                        <thead class="thead-light">
+                          <th>Factura</th>
+                          <th>concepto</th>
+                          <th>monto</th>
+                          <th>fecha pago</th>
+                          <th>Pagar</th>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of items; let i = index">    
+                            <td>
+                              {{item.factura}}
+                            </td>
+                            <td>
+                            Cuota numero: {{item.numeroCuota}}, de {{item.cuota}}
+                            </td>
+                            <td>
+                              {{item.restante}}
+                            </td>
+                           
+                            <td>
+                              {{item.fecha}}
+                            </td>
+                            <td>
+                            
+                                <button class="btn btn-success btn-sm"  type="button" (click)="eliminar(item)">Pagar</button>
+                              
+                            </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                  </div>
+            </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        ** Debe llenar todos los datos
+      </div>
+    </div>
+  
+    
+  

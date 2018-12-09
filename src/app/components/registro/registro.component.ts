@@ -34,4 +34,12 @@ export class RegistroComponent implements OnInit {
         });
     }
 
+    rol(){
+        if(this.currentUser.rol==""){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }

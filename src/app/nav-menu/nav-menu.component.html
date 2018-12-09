@@ -32,11 +32,11 @@
                 </ng-template>
             </li>
             <li class="nav-item">
-                    <div *ngIf="navlista()=='/pagos'; else pagos">
-                        <a class="nav-link active" [routerLink]="['/pagos']">Pagos</a>
+                    <div *ngIf="navlista()=='/pago'; else pagos">
+                        <a class="nav-link active" [routerLink]="['/pago']">Pagos</a>
                     </div>
                     <ng-template #pagos>
-                        <a class="nav-link active" [routerLink]="['/pagos']" style="background-color: transparent">Pagos</a>
+                        <a class="nav-link" [routerLink]="['/pago']" style="background-color: transparent">Pagos</a>
                     </ng-template>
                 </li>
                 <li class="nav-item justify-content-end">
@@ -103,11 +103,11 @@
                 </ng-template>
             </li>
             <li class="nav-item">
-                    <div *ngIf="navlista()=='/pagos'; else pagos">
-                        <a class="nav-link active" [routerLink]="['/pagos']">Pagos</a>
+                    <div *ngIf="navlista()=='/pago'; else pagos">
+                        <a class="nav-link active" [routerLink]="['/pago']">Pagos</a>
                     </div>
                     <ng-template #pagos>
-                        <a class="nav-link active" [routerLink]="['/pagos']" style="background-color: transparent">Pagos</a>
+                        <a class="nav-link active" [routerLink]="['/pago']" style="background-color: transparent">Pagos</a>
                     </ng-template>
                 </li>
                 <li class="nav-item justify-content-end">
@@ -120,7 +120,7 @@
                 </li>
                 
             <li class="nav-item justify-content-end">
-                    <div *ngIf="navlista()=='http://localhost:4200/logout'; else logout">
+                    <div *ngIf="navlista()=='/logout'; else logout">
                         <a class="nav-link active" [routerLink]="['/logout']">Logout</a>
                     </div>
                     <ng-template #logout>
@@ -180,5 +180,52 @@
       </div>
     </nav>
   </div>
+
+  <div *ngIf="currentUser.rol==''">
+        <nav class="navbar navbar-expand-lg circle " style="">
+          <a class="navbar-brand" [routerLink]="['/']">Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <div *ngIf="navlista()=='/deuda'; else deuda">
+                        <a class="nav-link active" [routerLink]="['/deuda']">Deuda</a>
+                    </div>
+                    <ng-template #deuda>
+                        <a class="nav-link " [routerLink]="['/deuda']" >Deuda</a>
+                    </ng-template>
+                    
+    
+                </li>
+                <li class="nav-item justify-content-end">
+                    <div *ngIf="navlista()=='/simulador'; else simulador">
+                        <a class="nav-link active" [routerLink]="['/simulador']">Simulador Credito</a>
+                    </div>
+                    <ng-template #simulador>
+                        <a class="nav-link active" [routerLink]="['/simulador']" style="background-color: transparent">Simulador Credito</a>
+                    </ng-template>
+                </li>
+                
+                    
+                <li class="nav-item justify-content-end">
+                        <div *ngIf="navlista()=='/logout'; else logout">
+                            <a class="nav-link active" [routerLink]="['/logout']">Logout</a>
+                        </div>
+                        <ng-template #logout>
+                            <a class="nav-link active" [routerLink]="['/logout']" style="background-color: transparent">logout</a>
+                        </ng-template>
+                </li>
+                  
+                </ul>
+          </div>
+        </nav>
+      </div>
+
 </div>
+
+
+
 

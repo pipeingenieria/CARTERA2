@@ -75,6 +75,7 @@ const appRoutes: Routes = [
             path : 'deuda',
             component: DeudaComponent
         },
+       
         
     ] },
     { path: 'login', component: LoginComponent },

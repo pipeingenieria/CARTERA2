@@ -41,6 +41,10 @@ export class DeudaComponent implements OnInit {
     this.userService.getAll().pipe(first()).subscribe(users => { 
         this.users = users; 
     });
-}
+  }
+
+  eliminar(item){
+    this.conexion.eliminarItem(item);
+  }
 
 }

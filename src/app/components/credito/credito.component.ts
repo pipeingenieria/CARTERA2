@@ -48,6 +48,9 @@ export class CreditoComponent implements OnInit {
   ngOnInit() {
     
       this.loadAllUsers();
+      $("#credito").hide();
+ 
+     
     
 
   }
@@ -66,13 +69,47 @@ export class CreditoComponent implements OnInit {
     var cedula:any = $("#Cedula").val();
     var factura:any = $("#factura").val();
     var resul = subtotal / cuotas;
+    //-----------------  FECHA ACTUAL  -----------------------------  >>
+    var d = new Date();
+    var month = d.getMonth()+1;
+    var day = d.getDate();
+    var output = d.getFullYear() + '/' +
+    (month<10 ? '0' : '') + month + '/' +
+    (day<10 ? '0' : '') + day;
+ //-----------------  //FECHA ACTUAL  -----------------------------  >>
+
+//-----------------  FECHA DE PAGO  -----------------------------  >>
+    var hoy = new Date();
+    var fechacontresdiasmas=hoy.getTime()+(30*24*60*60*1000);
+    var fechacontresdiasmasformatada= new Date(fechacontresdiasmas);
+    var month = fechacontresdiasmasformatada.getMonth()+1;
+    var day = fechacontresdiasmasformatada.getDate();
+    var year = fechacontresdiasmasformatada.getFullYear();
+    var output2 = year + '/' +
+    (month<10 ? '0' : '') + month + '/' +
+    (day<10 ? '0' : '') + day;
+
+//-----------------  //FECHA DE PAGO  -----------------------------  >>
 
     for (var i = 0; i < parseInt(cuotas)+1; i++) {
 
           var res = subtotal-resul*(i+1);
 
+          var d = new Date();
+          var month = d.getMonth()+i+2;
+          var day = d.getDate();
+          if(month>12){
+            month=i+1;
+            var year = d.getFullYear()+1;
+          }else{
+            var year = d.getFullYear();
+          }
+          var output2 = year + '/' +
+          (month<10 ? '0' : '') + month + '/' +
+          (day<10 ? '0' : '') + day;
+
           this.servicio.agregarItem(this.item);
-          this.item.fecha='11/05/2018(Prueba)';
+          this.item.fecha=output2;
           this.item.Cedula=cedula;
           this.item.factura=factura;
           this.item.restante=resul.toFixed(2);
@@ -86,10 +123,11 @@ export class CreditoComponent implements OnInit {
     this.servicio2.agregarItem(this.item2);
     this.item2.factura=$("#factura").val();
     this.item2.Cedula=$("#Cedula").val();
-    this.item2.fecha='11/05/2018(Prueba)';
+    this.item2.fecha=output;
     this.item2.valor=subtotal;
 
     $("#pagos tbody tr").remove();
+    alert("Credito Generado Correctamente");
 } else {
   alert("Debe Cotizar Prestamo de nuevo");
   $("#pagos tbody tr").remove();
@@ -164,7 +202,7 @@ export class CreditoComponent implements OnInit {
   }
 
   validateForm() {
-      
+      $("#credito").show();
       var prestamo:any = $("#Prestamo").val();
       var cuotas:any = $("#cuotas").val();
       var vehiculo:any = $("#Vehiculo").val();
@@ -187,12 +225,25 @@ export class CreditoComponent implements OnInit {
 
           var res = subtotal-resul*(i+1);
 
+          var d = new Date();
+          var month = d.getMonth()+i+2;
+          var day = d.getDate();
+          if(month>12){
+            month=i+1;
+            var year = d.getFullYear()+1;
+          }else{
+            var year = d.getFullYear();
+          }
+          var output2 = year + '/' +
+          (month<10 ? '0' : '') + month + '/' +
+          (day<10 ? '0' : '') + day;
+
            var row="<tr>";
            row += "<td width='4%'>"+(i+1)+"</td>";
            row += "<td>Cuota "+(i+1)+" de "+cuotas+"</td>";
            row += "<td>"+resul.toFixed(2)+"</td>";
            row += "<td>"+res.toFixed(2)+"</td>";
-           row += "<td>05/12/2018(prueba)</td>";
+           row += "<td>"+output2+"</td>";
            row +="</tr>";
            row +="<button class='btn btn-success mt-3' type='submit' (click)='agregar()'>Generar Credito</button>";
 

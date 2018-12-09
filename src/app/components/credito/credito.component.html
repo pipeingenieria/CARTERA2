@@ -17,7 +17,8 @@
                     <select 
                         placeholder="Imagen Producto"
                         id="Cedula" 
-                        name="Cedula">
+                        name="Cedula"
+                        class="form-control">
                         <option value="{{user.cedula}}" *ngFor="let user of users; let i = index">{{user.firstName}} {{user.lastName}}</option>
                     </select>
                     <br>
@@ -96,7 +97,7 @@
                     <br>
                     <br>
                     <h4>Total a Pagar: </h4>
-                  <input type="text" name="subtotal" id="sub-total" class="form-control" value=0>
+                  <input type="text" name="subtotal" id="sub-total" class="form-control" value=0 disabled>
                   <br>
                   <button class="btn btn-warning mt-3" type="button" (click)="validateForm()" >Calcular</button>
                   
@@ -104,8 +105,8 @@
                   <br>
                   <h4>Factura(Cuotas por Pagar):</h4>
                 <div id="pagos">
-                    <table class="table">
-                    <thead>
+                    <table class="table table-hover table-dark table-responsive">
+                    <thead class="thead-light">
                     <th>#</th>
                     <th>concepto</th>
                     <th>monto</th>
@@ -116,7 +117,7 @@
                     </table>
                 </div>
                 
-                 <button class="btn btn-success mt-3" type="submit" (click)="agregar()">Generar Credito</button>
+                 <button class="btn btn-success mt-3" type="submit" id="credito" (click)="agregar()">Generar Credito</button>
                    
                   <!-- Javascript -->
                   <script src="../../../assets/js/jquery-1.8.2.min.js"></script>
@@ -132,7 +133,4 @@
     </div>
   </div>
 
-  <div class="alert alert-primary" role="alert">
-    A simple primary alert—check it out!
-  </div>
   
