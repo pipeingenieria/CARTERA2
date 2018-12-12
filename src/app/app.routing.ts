@@ -88,4 +88,4 @@ const appRoutes: Routes = [
     { path: '**', component: ProductoComponent },
 ];
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(appRoutes, {useHash: true});

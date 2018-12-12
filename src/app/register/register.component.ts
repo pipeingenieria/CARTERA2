@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
             cedula: ['', Validators.required],
             telefono: ['', Validators.required],
         });
-        this.loadAllUsers();
+       /*  this.loadAllUsers(); */
     }
 
     // convenience getter for easy access to form fields
@@ -104,12 +104,14 @@ export class RegisterComponent implements OnInit {
 
     admin(){
        
-        if(this.currentUser.rol=="admin"){
+       /*  if(this.currentUser.rol=="admin"){
             return true;
         }else{
             
             return false;
-        }
+        } */
+
+        return true;
     
     }
 
